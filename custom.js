@@ -75,6 +75,7 @@ $('.moreless-button').click(function() {
       $(this).text("Read more")
     }
     });
+ 
 
   //  --------------- Display the Most Active-------
 const npoint = "http://107.173.198.184:5000";
@@ -89,10 +90,9 @@ async function fetchData() {
     for (i = 0; i < 5; i++) {
       var MostActivesymbol = data[i].symbol;
       var logo = await fetchLogo(MostActivesymbol);
-      // console.log('outside fetch ' + logo);
-      temp += "<tr align=center>";
+      temp += "<tr align='center' onclick='window.location.href = \"stock.html?symbol=" + data[i].symbol + "\";' style='cursor:pointer;'>";
       temp += "<td> <img src='" + logo + "' width=60% height=60% >" + "</td>";
-      temp += "<td>" + data[i].companyName + "</td>";
+      temp += "<td>"+data[i].companyName + "</td>";
       var decimal = data[i].changePercent;
       var percent = (decimal * 100) ;
       var percent = percent.toFixed(2)
@@ -108,26 +108,29 @@ async function fetchData() {
       temp += "</tr>";
     }
     document.getElementById("table_body").innerHTML = temp;
-    return MostActivesymbol[0];
+   
   }
+  
   catch (err) {
     console.log(err);
   }
+  
 }
 
 async function fetchLogo(symbol) {
   const logourl = npoint + '/Logo/' + symbol;
   const response = await fetch(logourl);
+  console.log(response);
   const data = await response.json();
   return data.url;
 }
 
-$(document).ready(function () {
-  $("#table").width("30%");
-});
 
 fetchData();
- 
+
+
+
+
   // ------------Display the Top Gainers------------------------
 
 
@@ -136,14 +139,15 @@ async function fetchData1(){
   try{
     const res = await fetch(npoint + "/Gainers");
     const data = await res.json();
+    console.log(data);
     temp = " ";
     var i;
     for(i=0;i<5;i++)
     {
       var symbol = data[i].symbol;
       var logo = await fetchLogo(symbol);
-      // console.log("outsidefetch " +logo)
-      temp += "<tr align=center>"
+      console.log("outsidefetch " +logo)
+      temp += "<tr align='center' onclick='window.location.href = \"stock.html?symbol=" + data[i].symbol + "\";' style='cursor:pointer;'>";
       temp += "<td> <img src='" + logo + "' width=60% height=60% >" + "</td>";
       temp += "<td>" + data[i].companyName + "</td>";
        var decimal = data[i].changePercent;
@@ -166,6 +170,7 @@ async function fetchData1(){
        temp += "</tr>";
 
     }
+    console.log(temp);
     document.getElementById("table_body-1").innerHTML = temp;
   }
   catch(err){
@@ -177,16 +182,14 @@ async function fetchLogo(symbol){
      const logourl = npoint + '/Logo/' + symbol;
      const response = await fetch(logourl)
      const data = await response.json();
+     console.log(data);
      return data.url;
 }
-$(document).ready(function(){
-  $("#table1").width("30%");
-});
+
 fetchData1()
 
 
 // ----------------------------Display the Top Loosers-------------
-
 async function fetchData2()
 {
   try{
@@ -198,8 +201,7 @@ async function fetchData2()
     {
       var symbol = data[i].symbol;
       var logo = await fetchLogo(symbol);
-      // console.log('outside-fetch'+logo)
-      temp += "<tr>";
+      temp += "<tr align='center' onclick='window.location.href = \"stock.html?symbol=" + data[i].symbol + "\";' style='cursor:pointer;'>";
       temp += "<td>  <img src = '"+ logo + " ' width=70% height = 70% + </td>";
       temp += "<td>" + data[i].companyName +"</td>";
       var decimal = data[i].changePercent;
@@ -238,12 +240,13 @@ async function fetchLogo(symbol){
   const data =await response.json()
   return data.url;
 }
+
 fetchData2()
 
 
 
 
-
+//CODE TO DISPLAY THE BBC NEWS
 $(document).ready(function(){
   var bbc = [];
   $.ajax({
@@ -261,9 +264,7 @@ $(document).ready(function(){
   
 
    });
-  //  console.log(bbc);
-   console.log(bbc[0].title);
-   for(l=0;l<4;l++)
+  for(l=0;l<4;l++)
    {
     inc = l + 1;
    document.getElementById("headline"+inc).innerHTML = bbc[l].title;
@@ -274,25 +275,19 @@ $(document).ready(function(){
 })
 });
 
+// -------------CODE TO DISPLAY THE ACTIVE COMPANY NEWS---------
 async function fetchActiveNews(){
   try{
   const data = await fetch(npoint + '/MostActive');
   const res1 = await data.json();
   var MostActivenews = [];
   var TotalMostActive = [];
- 
   for(i=0;i<6;i++)
   {
     var first = res1[i].symbol;
     var MostNews = await fetch(npoint + '/News/' + first);
     var news1 = await MostNews.json();
     MostActivenews.push(news1);
-    // var num1=(news1.news[0]);
-    // var headline5 = num1.headline;
-    // var image5 = num1.image;
-    // var summary5 = num1.summary;
-    // var url5 = num1.url;
-    // TotalMostActive.push({headline:headline5,Image:image5,Summary:summary5,Url:url5});
     if (news1 && news1.news && news1.news.length > 0) {
       let num1 = news1.news[0];
       let headline5 = num1.headline;
@@ -305,7 +300,6 @@ async function fetchActiveNews(){
       let nextCompanyIndex = i + 1;
       if (nextCompanyIndex < 6) {
         gain = res1[nextCompanyIndex].symbol;
-        console.log('News data not available for ' + res1[i].name + ', getting data for ' + res1[nextCompanyIndex].name);
         MostNews = await fetch(npoint + '/News/' + gain);
         news2 = await MostNews.json();
         if (news2 && news2.news && news2.news.length > 0) {
@@ -320,11 +314,7 @@ async function fetchActiveNews(){
     }
   }
 
-  
-
-  // console.log(TotalMostActive);
-
-  var MostHeadline = [];
+   var MostHeadline = [];
   var MostImage = [];
   var MostSummary = [];
   var MostUrl = [];
@@ -332,8 +322,7 @@ async function fetchActiveNews(){
   for(i=0;i<4;i++)
   {
     var newsheads = TotalMostActive[i].headline;
-    // console.log(newsheads);
-    MostHeadline.push(newsheads);
+     MostHeadline.push(newsheads);
     var newsimage = TotalMostActive[i].Image
     MostImage.push(newsimage);
     var newsSummary = TotalMostActive[i].Summary;
@@ -345,16 +334,12 @@ async function fetchActiveNews(){
   for(k=0;k<4;k++)
   {
     var inc = k+5;
-       
     var HeadlineId = "headline" + inc;
     var ImageId = "image" + inc;
-    // console.log(ImageId)
     var SummaryId = "summary" + inc;
     var urlId = "url" + inc;
-    
     var summary = MostSummary[k];
     var summaryText = summary ? sliceSummary(summary) : '';
-
     document.getElementById(HeadlineId).innerHTML = MostHeadline[k];
     document.getElementById(SummaryId).innerHTML = summaryText;
     document.getElementById(ImageId).src = MostImage[k];
@@ -388,17 +373,17 @@ catch(err)
 }
 }
 
-// fetchActiveNews();
+fetchActiveNews();
 
+// --------------CODE TO DISPLAY THE GAINERS NEWS------
 async function fetchGainersNews() {
   try {
     const data = await fetch(npoint + '/Gainers');
     const res1 = await data.json();
     var TopGainersnews = [];
     var TotalNews = [];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 8; i++) {
       let gain = res1[i].symbol;
-      console.log(gain);
       let MostNews = await fetch(npoint + '/News/' + gain);
       let news2 = await MostNews.json();
       TopGainersnews.push(news2);
@@ -414,7 +399,7 @@ async function fetchGainersNews() {
         let nextCompanyIndex = i + 1;
         if (nextCompanyIndex < 6) {
           gain = res1[nextCompanyIndex].symbol;
-          console.log('News data not available for ' + res1[i].name + ', getting data for ' + res1[nextCompanyIndex].name);
+          // console.log('News data not available for ' + res1[i].name + ', getting data for ' + res1[nextCompanyIndex].name);
           MostNews = await fetch(npoint + '/News/' + gain);
           news2 = await MostNews.json();
           if (news2 && news2.news && news2.news.length > 0) {
@@ -433,11 +418,10 @@ async function fetchGainersNews() {
   var GainerImage = [];
   var GainerSummary = [];
   var GainerUrl = [];
-
+  
   for(v=0;v<4;v++)
   {
     var newsheads = TotalNews[v].headline;
-    // console.log(newsheads);
     GainerHeadline.push(newsheads);
     var newsimage = TotalNews[v].Image
     GainerImage.push(newsimage);
@@ -445,21 +429,18 @@ async function fetchGainersNews() {
     GainerSummary.push(newsSummary);
     var newsurl = TotalNews[v].Url;
     GainerUrl.push(newsurl);
+
   }
 
   for(d=0;d<4;d++)
   {
     var inc = d+9;
-       
     var HeadlineId = "headline" + inc;
     var ImageId = "image" + inc;
-    // console.log(ImageId)
     var SummaryId = "summary" + inc;
     var urlId = "url" + inc;
-    
     var summary = GainerSummary[d];
     var summaryText = summary ? sliceSummary(summary) : '';
-
     document.getElementById(HeadlineId).innerHTML = GainerHeadline[d];
     document.getElementById(SummaryId).innerHTML = summaryText;
     document.getElementById(ImageId).src = GainerImage[d];
@@ -493,19 +474,18 @@ catch(err)
 }
 }
 
-// fetchGainersNews();
+fetchGainersNews();
+
+// -------CODE TO DISPLAY THE LOSERS NEWS-----
 async function fetchLosersNews(){
   try{
   const data = await fetch(npoint + '/Losers');
   const res1 = await data.json();
-  // console.log(res.length)
-  var TopLosersnews = [];
   var TotalNews = [];
   for(d=0;d<6;d++)
     {
       var second = res1[d].symbol;
-      console.log(second)
-      var MostNews = await fetch(npoint + '/News/' + second);
+       var MostNews = await fetch(npoint + '/News/' + second);
       var news3 = await MostNews.json();
       
       if (news3 && news3.news && news3.news.length > 0) {
@@ -520,11 +500,11 @@ async function fetchLosersNews(){
         let nextCompanyIndex = i + 1;
         if (nextCompanyIndex < 6) {
           gain = res1[nextCompanyIndex].symbol;
-          console.log('News data not available for ' + res1[i].symbol + ', getting data for ' + res1[nextCompanyIndex].symbol);
+          // console.log('News data not available for ' + res1[i].symbol + ', getting data for ' + res1[nextCompanyIndex].symbol);
           MostNews = await fetch(npoint + '/News/' + gain);
-          news2 = await MostNews.json();
-          if (news2 && news2.news && news2.news.length > 0) {
-            let num2 = news2.news[0];
+          news3 = await MostNews.json();
+          if (news3 && news2.news && news2.news.length > 0) {
+            let num2 = news3.news[0];
             let headline6 = num2.headline;
             let image6 = num2.image;
             let summary6 = num2.summary;
@@ -535,18 +515,13 @@ async function fetchLosersNews(){
       }
     }
 
-    
-  console.log(TotalNews);
-
   var LoserHeadline = [];
   var LoserImage = [];
   var LoserSummary = [];
   var LoserUrl = [];
-
-  for(v=0;v<4;v++)
+  for(v=0;v<6;v++)
   {
     var newsheads = TotalNews[v].headline;
-    // console.log(newsheads);
     LoserHeadline.push(newsheads);
     var newsimage = TotalNews[v].Image
     LoserImage.push(newsimage);
@@ -559,16 +534,12 @@ async function fetchLosersNews(){
   for(d=0;d<4;d++)
   {
     var inc = d+13;
-       
     var HeadlineId = "headline" + inc;
     var ImageId = "image" + inc;
-    // console.log(ImageId)
     var SummaryId = "summary" + inc;
     var urlId = "url" + inc;
-    
     var summary = LoserSummary[d];
     var summaryText = summary ? sliceSummary(summary) : '';
-
     document.getElementById(HeadlineId).innerHTML = LoserHeadline[d];
     document.getElementById(SummaryId).innerHTML = summaryText;
     document.getElementById(ImageId).src = LoserImage[d];
@@ -601,5 +572,40 @@ catch(err)
   console.log(err);
 }
 }
+fetchLosersNews();
 
-// fetchLosersNews();
+//CODE TO NAVIGATE THE STOCK PAGE THROUGH SEARCH BAR
+
+  const search = document.getElementById('exampleFormControlInput1');
+search.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+    const symbol = search.value;
+    window.location.href = `stock.html?symbol=${symbol}`;
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
