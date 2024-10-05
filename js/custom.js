@@ -75,9 +75,11 @@ $('.moreless-button').click(function() {
       $(this).text("Read more")
     }
     });
+ 
 
   //  --------------- Display the Most Active-------
 const npoint = "http://107.173.198.184:5000";
+const npoint1= "https://www.cnbc.com/id/100003114/device/rss/rss.html";
 
 async function fetchData() {
   try {
@@ -86,12 +88,11 @@ async function fetchData() {
     var temp = " ";
     var i;
     for (i = 0; i < 5; i++) {
-      var symbol = data[i].symbol;
-      var logo = await fetchLogo(symbol);
-      // console.log('outside fetch ' + logo);
-      temp += "<tr align=center>";
+      var MostActivesymbol = data[i].symbol;
+      var logo = await fetchLogo(MostActivesymbol);
+      temp += "<tr align='center' onclick='window.location.href = \"stock.html?symbol=" + data[i].symbol + "\";' style='cursor:pointer;'>";
       temp += "<td> <img src='" + logo + "' width=60% height=60% >" + "</td>";
-      temp += "<td>" + data[i].companyName + "</td>";
+      temp += "<td>"+data[i].companyName + "</td>";
       var decimal = data[i].changePercent;
       var percent = (decimal * 100) ;
       var percent = percent.toFixed(2)
@@ -107,24 +108,29 @@ async function fetchData() {
       temp += "</tr>";
     }
     document.getElementById("table_body").innerHTML = temp;
-  } catch (err) {
+   
+  }
+  
+  catch (err) {
     console.log(err);
   }
+  
 }
 
 async function fetchLogo(symbol) {
   const logourl = npoint + '/Logo/' + symbol;
   const response = await fetch(logourl);
+  console.log(response);
   const data = await response.json();
   return data.url;
 }
 
-$(document).ready(function () {
-  $("#table").width("30%");
-});
 
 fetchData();
- 
+
+
+
+
   // ------------Display the Top Gainers------------------------
 
 
@@ -133,14 +139,15 @@ async function fetchData1(){
   try{
     const res = await fetch(npoint + "/Gainers");
     const data = await res.json();
+    console.log(data);
     temp = " ";
     var i;
     for(i=0;i<5;i++)
     {
       var symbol = data[i].symbol;
       var logo = await fetchLogo(symbol);
-      // console.log("outsidefetch " +logo)
-      temp += "<tr align=center>"
+      console.log("outsidefetch " +logo)
+      temp += "<tr align='center' onclick='window.location.href = \"stock.html?symbol=" + data[i].symbol + "\";' style='cursor:pointer;'>";
       temp += "<td> <img src='" + logo + "' width=60% height=60% >" + "</td>";
       temp += "<td>" + data[i].companyName + "</td>";
        var decimal = data[i].changePercent;
@@ -163,6 +170,7 @@ async function fetchData1(){
        temp += "</tr>";
 
     }
+    console.log(temp);
     document.getElementById("table_body-1").innerHTML = temp;
   }
   catch(err){
@@ -174,16 +182,14 @@ async function fetchLogo(symbol){
      const logourl = npoint + '/Logo/' + symbol;
      const response = await fetch(logourl)
      const data = await response.json();
+     console.log(data);
      return data.url;
 }
-$(document).ready(function(){
-  $("#table1").width("30%");
-});
+
 fetchData1()
 
 
 // ----------------------------Display the Top Loosers-------------
-
 async function fetchData2()
 {
   try{
@@ -195,8 +201,7 @@ async function fetchData2()
     {
       var symbol = data[i].symbol;
       var logo = await fetchLogo(symbol);
-      // console.log('outside-fetch'+logo)
-      temp += "<tr>";
+      temp += "<tr align='center' onclick='window.location.href = \"stock.html?symbol=" + data[i].symbol + "\";' style='cursor:pointer;'>";
       temp += "<td>  <img src = '"+ logo + " ' width=70% height = 70% + </td>";
       temp += "<td>" + data[i].companyName +"</td>";
       var decimal = data[i].changePercent;
@@ -235,109 +240,372 @@ async function fetchLogo(symbol){
   const data =await response.json()
   return data.url;
 }
+
 fetchData2()
 
 
 
 
-// async function fetchNews(symbol) {
-//   try {
-//     var newsSummary = [];
-//     var headlines = [];
-//     var result = await fetch(npoint + "/News/" + symbol);
-//     const data = await result.json();
-//     const newsArray = Object.entries(data.news);
-
-//     for (var j = 0; j < 4 && j < newsArray.length; j++) {
-//       var newsHeadline = (newsArray[j][1].headline);
-//       var newsImage = ('Image: ' + newsArray[j][1].image);
-//       var newsSummary = ('Summary: ' + newsArray[j][1].summary);
-//       headlines.push(newsHeadline);
-//       // console.log(headlines)
-     
-//     }
-//     // return newsSummary;
-//     return headlines;
+//CODE TO DISPLAY THE BBC NEWS
+$(document).ready(function(){
+  var bbc = [];
+  $.ajax({
+ type:"GET",
+ url:"https://www.cnbc.com/id/100003114/device/rss/rss.html",
+ dataType:"xml",
+ success:function(xml){
   
-//   } catch (err) {
-//     console.log(err)
-//   }
-// }
+   $(xml).find("item").each(function(){
+     var Title = $(this).find("title").text();
+     var Description  = $(this).find("description").text();
+     var Link = $(this).find("link").text();
+  
+    bbc.push({title:Title,desc:Description,link:Link});
+  
 
-// async function fetchData4() {
-//   try {
-//     var res = await fetch(npoint + "/MostActive");
-//     const data = await res.json()
-//     var symbol;
-//     var i;
-//     var allHeadlines = [];
-//     for (i = 0; i < 5; i++) {
-//       symbol = data[i].symbol;
-//       console.log(symbol);
-//       var headlines = await fetchNews(symbol);
-//       allHeadlines = allHeadlines.concat(headlines);
-//       // console.log(allHeadlines)
-//     }
-//     console.log(allHeadlines)
-//     for(i=1;i<=17;i++){
-       
-//        var HeadlineId = "headline" + i
-//        document.getElementById(HeadlineId).innerHTML = allHeadlines[i-1]; 
-//     }
-   
-//   } catch (err) {
-//     console.log(err)
-//   }
-// }
+   });
+  for(l=0;l<4;l++)
+   {
+    inc = l + 1;
+   document.getElementById("headline"+inc).innerHTML = bbc[l].title;
+   document.getElementById("summary" + inc).innerHTML = bbc[l].desc;
+   document.getElementById("url"+inc).href = bbc[l].link;
+   }
+ }
+})
+});
 
-// fetchData4();
-
-async function fetchNews(symbol) {
-  try {
-    var news = [];
-    var result = await fetch(npoint + "/News/" + symbol);
-    const data = await result.json();
-    const newsArray = Object.entries(data.news);
-
-    for (var j = 0; j < 4 && j < newsArray.length; j++) {
-      var newsHeadline = (newsArray[j][1].headline);
-      var newsImage = ('Image: ' + newsArray[j][1].image);
-      var newsSummary = ('Summary: ' + newsArray[j][1].summary);
-      news.push({symbol: symbol, headline: newsHeadline, image: newsImage, summary: newsSummary});
+// -------------CODE TO DISPLAY THE ACTIVE COMPANY NEWS---------
+async function fetchActiveNews(){
+  try{
+  const data = await fetch(npoint + '/MostActive');
+  const res1 = await data.json();
+  var MostActivenews = [];
+  var TotalMostActive = [];
+  for(i=0;i<6;i++)
+  {
+    var first = res1[i].symbol;
+    var MostNews = await fetch(npoint + '/News/' + first);
+    var news1 = await MostNews.json();
+    MostActivenews.push(news1);
+    if (news1 && news1.news && news1.news.length > 0) {
+      let num1 = news1.news[0];
+      let headline5 = num1.headline;
+      let image5 = num1.image;
+      let summary5 = num1.summary;
+      let url5 = num1.url;
+      TotalMostActive.push({headline:headline5,Image:image5,Summary:summary5,Url:url5});
+    } else {
+      // If news data is not available for this company, get the data of the next company
+      let nextCompanyIndex = i + 1;
+      if (nextCompanyIndex < 6) {
+        gain = res1[nextCompanyIndex].symbol;
+        MostNews = await fetch(npoint + '/News/' + gain);
+        news2 = await MostNews.json();
+        if (news2 && news2.news && news2.news.length > 0) {
+          let num2 = news2.news[0];
+          let headline6 = num2.headline;
+          let image6 = num2.image;
+          let summary6 = num2.summary;
+          let url6 = num2.url;
+          TotalMostActive.push({headline:headline6,Image:image6,Summary:summary6,Url:url6});
+        }
+      }
     }
-    return news;
-  } catch (err) {
-    console.log(err)
+  }
+
+   var MostHeadline = [];
+  var MostImage = [];
+  var MostSummary = [];
+  var MostUrl = [];
+
+  for(i=0;i<4;i++)
+  {
+    var newsheads = TotalMostActive[i].headline;
+     MostHeadline.push(newsheads);
+    var newsimage = TotalMostActive[i].Image
+    MostImage.push(newsimage);
+    var newsSummary = TotalMostActive[i].Summary;
+    MostSummary.push(newsSummary);
+    var newsurl = TotalMostActive[i].Url;
+    MostUrl.push(newsurl);
+  }
+
+  for(k=0;k<4;k++)
+  {
+    var inc = k+5;
+    var HeadlineId = "headline" + inc;
+    var ImageId = "image" + inc;
+    var SummaryId = "summary" + inc;
+    var urlId = "url" + inc;
+    var summary = MostSummary[k];
+    var summaryText = summary ? sliceSummary(summary) : '';
+    document.getElementById(HeadlineId).innerHTML = MostHeadline[k];
+    document.getElementById(SummaryId).innerHTML = summaryText;
+    document.getElementById(ImageId).src = MostImage[k];
+    document.getElementById(urlId).href = MostUrl[k];
+  }
+
+  function sliceSummary(Summary) {
+    const maxLength = 340;
+    if (!Summary) {
+      // If Summary is undefined or null, return an empty string
+      return '';
+    } else if (Summary.length <= maxLength) {
+      // The summary is already short enough
+      return Summary;
+    } else {
+      // Find the last space before the maximum length
+      const lastSpaceIndex = Summary.lastIndexOf(' ', maxLength);
+      if (lastSpaceIndex === -1) {
+        // If no space is found, just slice the summary to the maximum length
+        return Summary.slice(0, maxLength);
+      } else {
+        // Slice the summary to the last space before the maximum length
+        return Summary.slice(0, lastSpaceIndex);
+      }
+    }
   }
 }
-
-async function fetchData4() {
-  try {
-    var res = await fetch(npoint + "/MostActive");
-    const data = await res.json()
-    var symbol;
-    var i;
-    var allNews = [];
-    for (i = 0; i < 5; i++) {
-      symbol = data[i].symbol;
-      console.log(symbol);
-      var news = await fetchNews(symbol);
-      allNews = allNews.concat(news);
-    }
-    console.log(allNews)
-    for(i=1;i<allNews.length;i++){
-       var HeadlineId = "headline" + i;
-       var ImageId = "image" + (i+1);
-       var SummaryId = "summary" + i;
-       var SymbolId = "symbol" + i+1;
-       document.getElementById(HeadlineId).innerHTML = allNews[i-1].headline; 
-       document.getElementById(ImageId).innerHTML = allNews[i-1].image; 
-       document.getElementById(SummaryId).innerHTML = allNews[i-1].summary; 
-       document.getElementById(SymbolId).innerHTML = allNews[i-1].symbol; 
-    }
-  } catch (err) {
-    console.log(err)
-  }
+catch(err)
+{
+  console.log(err);
+}
 }
 
-fetchData4();
+fetchActiveNews();
+
+// --------------CODE TO DISPLAY THE GAINERS NEWS------
+async function fetchGainersNews() {
+  try {
+    const data = await fetch(npoint + '/Gainers');
+    const res1 = await data.json();
+    var TopGainersnews = [];
+    var TotalNews = [];
+    for (let i = 0; i < 8; i++) {
+      let gain = res1[i].symbol;
+      let MostNews = await fetch(npoint + '/News/' + gain);
+      let news2 = await MostNews.json();
+      TopGainersnews.push(news2);
+      if (news2 && news2.news && news2.news.length > 0) {
+        let num2 = news2.news[0];
+        let headline6 = num2.headline;
+        let image6 = num2.image;
+        let summary6 = num2.summary;
+        let url6 = num2.url;
+        TotalNews.push({headline:headline6,Image:image6,Summary:summary6,Url:url6});
+      } else {
+        // If news data is not available for this company, get the data of the next company
+        let nextCompanyIndex = i + 1;
+        if (nextCompanyIndex < 6) {
+          gain = res1[nextCompanyIndex].symbol;
+          // console.log('News data not available for ' + res1[i].name + ', getting data for ' + res1[nextCompanyIndex].name);
+          MostNews = await fetch(npoint + '/News/' + gain);
+          news2 = await MostNews.json();
+          if (news2 && news2.news && news2.news.length > 0) {
+            let num2 = news2.news[0];
+            let headline6 = num2.headline;
+            let image6 = num2.image;
+            let summary6 = num2.summary;
+            let url6 = num2.url;
+            TotalNews.push({headline:headline6,Image:image6,Summary:summary6,Url:url6});
+          }
+        }
+      }
+    }
+
+  var GainerHeadline = [];
+  var GainerImage = [];
+  var GainerSummary = [];
+  var GainerUrl = [];
+  
+  for(v=0;v<4;v++)
+  {
+    var newsheads = TotalNews[v].headline;
+    GainerHeadline.push(newsheads);
+    var newsimage = TotalNews[v].Image
+    GainerImage.push(newsimage);
+    var newsSummary = TotalNews[v].Summary;
+    GainerSummary.push(newsSummary);
+    var newsurl = TotalNews[v].Url;
+    GainerUrl.push(newsurl);
+
+  }
+
+  for(d=0;d<4;d++)
+  {
+    var inc = d+9;
+    var HeadlineId = "headline" + inc;
+    var ImageId = "image" + inc;
+    var SummaryId = "summary" + inc;
+    var urlId = "url" + inc;
+    var summary = GainerSummary[d];
+    var summaryText = summary ? sliceSummary(summary) : '';
+    document.getElementById(HeadlineId).innerHTML = GainerHeadline[d];
+    document.getElementById(SummaryId).innerHTML = summaryText;
+    document.getElementById(ImageId).src = GainerImage[d];
+    document.getElementById(urlId).href = GainerUrl[d];
+  }
+
+  function sliceSummary(Summary) {
+    const maxLength = 340;
+    if (!Summary) {
+      // If Summary is undefined or null, return an empty string
+      return '';
+    } else if (Summary.length <= maxLength) {
+      // The summary is already short enough
+      return Summary;
+    } else {
+      // Find the last space before the maximum length
+      const lastSpaceIndex = Summary.lastIndexOf(' ', maxLength);
+      if (lastSpaceIndex === -1) {
+        // If no space is found, just slice the summary to the maximum length
+        return Summary.slice(0, maxLength);
+      } else {
+        // Slice the summary to the last space before the maximum length
+        return Summary.slice(0, lastSpaceIndex);
+      }
+    }
+  }
+}
+catch(err)
+{
+  console.log(err);
+}
+}
+
+fetchGainersNews();
+
+// -------CODE TO DISPLAY THE LOSERS NEWS-----
+async function fetchLosersNews(){
+  try{
+  const data = await fetch(npoint + '/Losers');
+  const res1 = await data.json();
+  var TotalNews = [];
+  for(d=0;d<6;d++)
+    {
+      var second = res1[d].symbol;
+       var MostNews = await fetch(npoint + '/News/' + second);
+      var news3 = await MostNews.json();
+      
+      if (news3 && news3.news && news3.news.length > 0) {
+        let num2 = news3.news[0];
+        let headline6 = num2.headline;
+        let image6 = num2.image;
+        let summary6 = num2.summary;
+        let url6 = num2.url;
+        TotalNews.push({headline:headline6,Image:image6,Summary:summary6,Url:url6});
+      } else {
+        // If news data is not available for this company, get the data of the next company
+        let nextCompanyIndex = i + 1;
+        if (nextCompanyIndex < 6) {
+          gain = res1[nextCompanyIndex].symbol;
+          // console.log('News data not available for ' + res1[i].symbol + ', getting data for ' + res1[nextCompanyIndex].symbol);
+          MostNews = await fetch(npoint + '/News/' + gain);
+          news3 = await MostNews.json();
+          if (news3 && news2.news && news2.news.length > 0) {
+            let num2 = news3.news[0];
+            let headline6 = num2.headline;
+            let image6 = num2.image;
+            let summary6 = num2.summary;
+            let url6 = num2.url;
+            TotalNews.push({headline:headline6,Image:image6,Summary:summary6,Url:url6});
+          }
+        }
+      }
+    }
+
+  var LoserHeadline = [];
+  var LoserImage = [];
+  var LoserSummary = [];
+  var LoserUrl = [];
+  for(v=0;v<6;v++)
+  {
+    var newsheads = TotalNews[v].headline;
+    LoserHeadline.push(newsheads);
+    var newsimage = TotalNews[v].Image
+    LoserImage.push(newsimage);
+    var newsSummary = TotalNews[v].Summary;
+    LoserSummary.push(newsSummary);
+    var newsurl = TotalNews[v].Url;
+    LoserUrl.push(newsurl);
+  }
+
+  for(d=0;d<4;d++)
+  {
+    var inc = d+13;
+    var HeadlineId = "headline" + inc;
+    var ImageId = "image" + inc;
+    var SummaryId = "summary" + inc;
+    var urlId = "url" + inc;
+    var summary = LoserSummary[d];
+    var summaryText = summary ? sliceSummary(summary) : '';
+    document.getElementById(HeadlineId).innerHTML = LoserHeadline[d];
+    document.getElementById(SummaryId).innerHTML = summaryText;
+    document.getElementById(ImageId).src = LoserImage[d];
+    document.getElementById(urlId).href = LoserUrl[d];
+  }
+
+  function sliceSummary(Summary) {
+    const maxLength = 340;
+    if (!Summary) {
+      // If Summary is undefined or null, return an empty string
+      return '';
+    } else if (Summary.length <= maxLength) {
+      // The summary is already short enough
+      return Summary;
+    } else {
+      // Find the last space before the maximum length
+      const lastSpaceIndex = Summary.lastIndexOf(' ', maxLength);
+      if (lastSpaceIndex === -1) {
+        // If no space is found, just slice the summary to the maximum length
+        return Summary.slice(0, maxLength);
+      } else {
+        // Slice the summary to the last space before the maximum length
+        return Summary.slice(0, lastSpaceIndex);
+      }
+    }
+  }
+}
+catch(err)
+{
+  console.log(err);
+}
+}
+fetchLosersNews();
+
+//CODE TO NAVIGATE THE STOCK PAGE THROUGH SEARCH BAR
+
+  const search = document.getElementById('exampleFormControlInput1');
+search.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+    const symbol = search.value;
+    window.location.href = `stock.html?symbol=${symbol}`;
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

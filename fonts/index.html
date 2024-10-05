@@ -7,12 +7,12 @@
     <!-- Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>FINANCIAL STOCK MARKET PORTAL</title>
+    <title>The11wallst</title>
   </head>
   <body>
     <header>
       <div class="headSection">
+
         <div class="container">
           <div class="headerTopbar">
             <div class="row align-items-center">
@@ -23,7 +23,7 @@
                       <a class="searchTogle" href="JavaScript:void(0);"><img src="images/search-icon.svg" alt="..."></a>
                       <div class="searchBar">
                         <div class="searchInputCol">
-                          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Search">
+                          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Search">
                           <span class="closeIcon"><img src="images/close-icon.svg" alt="..."></span>
                         </div>
                       </div>
@@ -97,8 +97,7 @@
               </div>
               <div class="col">
                 <div class="logo">
-                  <h2 id="logo">FINANCIAL STOCK MARKET PORTAL <img src="images/img (1).jpg" id="img"></h2>
-                  
+                  <a href="index.html"><img src="images/logo.png" alt="..."></a>
                 </div>
               </div>
               <div class="col-auto">
@@ -235,10 +234,10 @@
                           <!-- TradingView Widget BEGIN -->
                           <div class="tradingview-widget-container">
                             <div class="tradingview-widget-container__widget"></div>
-                            <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/DJ-DJI/" rel="noopener" target="_blank"><span class="blue-text">NSXUSD Quotes</span></a> by TradingView</div> -->
-                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                            <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/FOREXCOM-NSXUSD/" rel="noopener" target="_blank"><span class="blue-text">NSXUSD Quotes</span></a> by TradingView</div> -->
+                            <script type="text/javascript" src="https://www.tradingview.com/symbols/FOREXCOM-DJI/" async>
                             {
-                            "symbol": "FOREXCOM:DJI",
+                            "symbol": "FOREXCOM:NSXUSD",
                             "width": "290",
                             "colorTheme": "light",
                             "isTransparent": true,
@@ -267,10 +266,10 @@
                           <!-- TradingView Widget BEGIN -->
                           <div class="tradingview-widget-container">
                             <div class="tradingview-widget-container__widget"></div>
-                            <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/FOREXCOM-SPXUSD/" rel="noopener" target="_blank"><span class="blue-text">NSXUSD Quotes</span></a> by TradingView</div> -->
+                            <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/FOREXCOM-NSXUSD/" rel="noopener" target="_blank"><span class="blue-text">NSXUSD Quotes</span></a> by TradingView</div> -->
                             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
                             {
-                            "symbol": "FOREXCOM:SPXUSD",
+                            "symbol": "FOREXCOM:NSXUSD",
                             "width": "290",
                             "colorTheme": "light",
                             "isTransparent": true,
@@ -281,21 +280,21 @@
                           <!-- TradingView Widget END -->
                         </li>
                         <li class="tradingviewCol">
-                        <!-- TradingView Widget BEGIN -->
-                        <div class="tradingview-widget-container">
-                          <div class="tradingview-widget-container__widget"></div>
-                          <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/BSE-SENSEX/" rel="noopener" target="_blank"><span class="blue-text">SENSEX quotes</span></a> by TradingView</div>
-                          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
-                          {
-                          "symbol": "BSE:SENSEX",
-                          "width": "325",
-                          "colorTheme": "light",
-                          "isTransparent": true,
-                          "locale": "en"
-                        }
-                          </script>
-                        </div>
-                        <!-- TradingView Widget END -->
+                          <!-- TradingView Widget BEGIN -->
+                          <div class="tradingview-widget-container">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/FOREXCOM-NSXUSD/" rel="noopener" target="_blank"><span class="blue-text">NSXUSD Quotes</span></a> by TradingView</div> -->
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                            {
+                            "symbol": "FOREXCOM:NSXUSD",
+                            "width": "290",
+                            "colorTheme": "light",
+                            "isTransparent": true,
+                            "locale": "en"
+                            }
+                            </script>
+                          </div>
+                          <!-- TradingView Widget END -->
                         </li>
                       </ul>
                     </div>
@@ -735,29 +734,36 @@
                 </div>
               </div>
             </div>
+            <!-- <!-- <div class="col-lg-4"> -->
               <div class="ColRight">
-              <div class="table-1">
+                <!-- <div class="cryptoCurrenicesCol activeListCol mt-0"> -->
                   <div class="titleCol">
                     <h3>Most Active</h3>
                   </div>
-                      <table class="table" id="table" style="color:white ;">
-                         <thead class="table-dark">
-                          <tr align="center">
-                             <th scope="col" style="color:white">LOGO</th>
-                              <th scope="col" >COMPANY NAME</th>
-                              <th scope="col">CHANGE-PERCENT</th>
-                              <th scope="col">LATEST-PRICE</th>
-                          </tr>
-                          </thead>
-                          <tbody id="table_body">
-                          <tr align="center">
+                  <!-- <ul> -->
+                    <!-- <li> -->
+                      <!-- <div class="cryptoCurrenicesLists activeListCol"> -->
+                        <!-- <div class="row"> -->
+                          <!-- <div class="col"> -->
+                            <!-- <div class="crypolistCard"> -->
+                               
+                                <table class="table" id="table">
+                                        <thead class="table-dark">
+                                         <tr align="center">
+                                          <th scope="col">LOGO</th>
+                                         <th scope="col">COMPANY NAME</th>
+                                          <th scope="col">CHANGE-PERCENT</th>
+                                           <th scope="col">LATEST-PRICE</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody id="table_body">
+                                         <tr align="center">
 
-                          </tr>
-                      </table>  
-              </div>  
-              </div>                        
+                                         </tr>
+                                        </table>  
+              </div>                          
                                <!-- <div class="crypolistIcon"><img src="images/ocgn-icon.png" alt="..."></div>
-                              <div class="crypoTex////////////////////////t">
+                              <div class="crypoText">
                                 <span class="companyfield">OCGN</span>
                                 <h4 class="companyName"><a href="javascript:void(0);">Lorem ipusm</a></h4>
                               </div>
@@ -855,11 +861,6 @@
                     </li>
                   </ul>
                 </div> -->
-               <div class="cryptoCurrenicesLists"> 
-               <div class="row"> 
-              <div class="col"> 
-                <ul>
-                <li>
                 <div class="ColRight1">
                   <div class="titleCol">
                     <h3>Top Gainers</h3>
@@ -877,13 +878,8 @@
                      <tr align="center">
 
                      </tr>
-                    </table> 
-                  </li> 
-                </ul> 
+                    </table>  
                 </div>  
-              </div>
-            </div>
-           </div>     
                   <!-- <ul>
                     <li>
                       <div class="cryptoCurrenicesLists activeListCol">
@@ -1015,17 +1011,14 @@
                             <div class="row g-0 align-items-center">
                               <div class="col-xl-auto">
                                 <div class="cardBoxImg">
-                                  <!-- <img  alt="..." id="image1"><br><br> -->
+                                  <img src="images/market-news1.jpg" alt="...">
                                 </div>
                               </div>
                               <div class="col-xl">
                                 <div class="cardBoxContent">
-                                  <!-- <a href="javascript:void(0);" class="playIcon"><img src="images/play-icon.svg" alt="..."></a> -->
-                                  <h4 id="headline1"><a href="javascript:void(0);"></a></h4>
-                                  <!-- <span class="editCol"><a href="javascript:void(0);"><img src="images/edit-icon.svg" alt="..."></a>2,205</span> -->
-                                  <p id="summary1"></p>
-                                  <span class="blockquote">Source by CNBC</span>
-                                  <a href="" id="url1" style="color:blue ; text-decoration: underline;">Read more..</a>
+                                  <a href="javascript:void(0);" class="playIcon"><img src="images/play-icon.svg" alt="..."></a>
+                                  <h4><a href="javascript:void(0);">Amet minim mollit non deserunt ullamco...</a></h4>
+                                  <span class="editCol"><a href="javascript:void(0);"><img src="images/edit-icon.svg" alt="..."></a>2,205</span>
                                 </div>
                               </div>
                             </div>
@@ -1036,17 +1029,14 @@
                             <div class="row g-0 align-items-center">
                               <div class="col-xl-auto">
                                 <div class="cardBoxImg">
-                                  <!-- <img  alt="..." id="image2"> -->
+                                  <img src="images/market-news2.jpg" alt="...">
                                 </div>
                               </div>
                               <div class="col-xl">
                                 <div class="cardBoxContent">
-                                  <!-- <a href="javascript:void(0);" class="playIcon"><img src="images/play-icon.svg" alt="..."></a> -->
-                                  <h4 id="headline2"><a href="javascript:void(0);"></a></h4>
-                                  <p id="summary2"></p>
-                                  <span class="blockquote">Source by CNBC</span>
-                                  <a href="" id="url2" style="color:blue ; text-decoration: underline;">Read more..</a>
-                                  <!-- <span class="editCol"><a href="javascript:void(0);"><img src="images/edit-icon.svg" alt="..."></a>5,095</span> -->
+                                  <a href="javascript:void(0);" class="playIcon"><img src="images/play-icon.svg" alt="..."></a>
+                                  <h4><a href="javascript:void(0);">Amet minim mollit non deserunt ullamco...</a></h4>
+                                  <span class="editCol"><a href="javascript:void(0);"><img src="images/edit-icon.svg" alt="..."></a>5,095</span>
                                 </div>
                               </div>
                             </div>
@@ -1061,17 +1051,14 @@
                             <div class="row g-0 align-items-center">
                               <div class="col-xl-auto">
                                 <div class="cardBoxImg">
-                                  <!-- <img  alt="..." id="image3"> -->
+                                  <img src="images/market-news1.jpg" alt="...">
                                 </div>
                               </div>
                               <div class="col-xl">
                                 <div class="cardBoxContent">
-                                  <!-- <a href="javascript:void(0);" class="playIcon"><img src="images/play-icon.svg" alt="..."></a> -->
-                                  <h4 id="headline3"><a href="javascript:void(0);"></a></h4>
-                                  <p id="summary3"></p>
-                                  <span class="blockquote">Source by CNBC</span>
-                                  <a href="" id="url3" style="color:blue ; text-decoration: underline;">Read more..</a>
-                                  <!-- <span class="editCol"><a href="javascript:void(0);"><img src="images/edit-icon.svg" alt="..."></a>2,205</span> -->
+                                  <a href="javascript:void(0);" class="playIcon"><img src="images/play-icon.svg" alt="..."></a>
+                                  <h4><a href="javascript:void(0);">Amet minim mollit non deserunt ullamco...</a></h4>
+                                  <span class="editCol"><a href="javascript:void(0);"><img src="images/edit-icon.svg" alt="..."></a>2,205</span>
                                 </div>
                               </div>
                             </div>
@@ -1082,17 +1069,14 @@
                             <div class="row g-0 align-items-center">
                               <div class="col-xl-auto">
                                 <div class="cardBoxImg">
-                                  <!-- <img alt="..." id="image4"> -->
+                                  <img src="images/market-news2.jpg" alt="...">
                                 </div>
                               </div>
                               <div class="col-xl">
                                 <div class="cardBoxContent">
-                                  <!-- <a href="javascript:void(0);" class="playIcon"><img src="images/play-icon.svg" alt="..."></a> -->
-                                  <h4 id="headline4"><a href="javascript:void(0);"></a></h4>
-                                  <p id="summary4"></p>
-                                  <span class="blockquote">Source by CNBC</span>
-                                  <a href="" id="url4" style="color:blue ; text-decoration: underline;">Read more..</a>
-                                  <!-- <span class="editCol"><a href="javascript:void(0);"><img src="images/edit-icon.svg" alt="..."></a>5,095</span> -->
+                                  <a href="javascript:void(0);" class="playIcon"><img src="images/play-icon.svg" alt="..."></a>
+                                  <h4><a href="javascript:void(0);">Amet minim mollit non deserunt ullamco...</a></h4>
+                                  <span class="editCol"><a href="javascript:void(0);"><img src="images/edit-icon.svg" alt="..."></a>5,095</span>
                                 </div>
                               </div>
                             </div>
@@ -1116,56 +1100,50 @@
                         <div class="row">
                           <div class="col-md-4">
                             <div class="subCardStyle">
-                              <img  alt="..." id="image5">
-                              <h4 id="headline5"><a href="javascript:void(0);"></a></h4>
-                              <p id="summary5"></p>
-                              <a href="" id="url5" style="color:blue ; text-decoration: underline;">Read more..</a>
-                              
+                              <img src="images/list-news1.jpg" alt="...">
+                              <h4><a href="javascript:void(0);">Amet minim mollit non text deserunt ullamco...</a></h4>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the...</p>
+                              <span class="blockquote">By, Jacob Jones</span>
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="subCardStyle">
-                              <img alt="..." id="image6">
-                              <h4 id="headline6"><a href="javascript:void(0);"></a></h4>
-                              <p id="summary6"></p>
-                              <a href="" id="url6" style="color:blue ; text-decoration: underline;">Read more..</a>
-                            
+                              <img src="images/list-news2.jpg" alt="...">
+                              <h4><a href="javascript:void(0);">Amet minim mollit non text deserunt ullamco...</a></h4>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the...</p>
+                              <span class="blockquote">By, Cameron Williamson</span>
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="subCardStyle">
-                              <img alt="..." id="image7">
-                              <h4 id="headline7" ><a href="javascript:void(0);"></a></h4>
-                              <p id="summary7"></p>
-                              <a href="" id="url7" style="color:blue ; text-decoration: underline;">Read more..</a>
-                              <!-- <span class="blockquote">By, Jacob Jones</span> -->
+                              <img src="images/list-news3.jpg" alt="...">
+                              <h4><a href="javascript:void(0);">Amet minim mollit non text deserunt ullamco...</a></h4>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the...</p>
+                              <span class="blockquote">By, Jacob Jones</span>
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="subCardStyle">
-                              <img  alt="..." id="image8">
-                              <h4 id="headline8"><a href="javascript:void(0);"></a></h4>
-                              <p id="summary8"></p>
-                              <a href="" id="url8" style="color:blue ; text-decoration: underline;">Read more..</a>
-                              <!-- <span class="blockquote"></span> -->
+                              <img src="images/list-news4.jpg" alt="...">
+                              <h4><a href="javascript:void(0);">Amet minim mollit non text deserunt ullamco...</a></h4>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the...</p>
+                              <span class="blockquote">By, Cameron Williamson</span>
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="subCardStyle">
-                              <img alt="..." id="image9">
-                              <h4 id="headline9"><a href="javascript:void(0);"></a></h4>
-                              <p id="summary9"></p>
-                              <a href="" id="url9" style="color:blue ; text-decoration: underline;">Read more..</a>
-                              <!-- <span class="blockquote">By, Courtney Henry</span> -->
+                              <img src="images/list-news5.jpg" alt="...">
+                              <h4><a href="javascript:void(0);">Amet minim mollit non text deserunt ullamco...</a></h4>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the...</p>
+                              <span class="blockquote">By, Courtney Henry</span>
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="subCardStyle">
-                              <img  alt="..." id="image10">
-                              <h4 id="headline10"><a href="javascript:void(0);"></a></h4>
-                              <p id="summary10"></p>
-                              <a href="" id="url10" style="color:blue ; text-decoration: underline;">Read more..</a>
-                              <!-- <span class="blockquote">By, Annette Black</span> -->
+                              <img src="images/list-news6.jpg" alt="...">
+                              <h4><a href="javascript:void(0);">Amet minim mollit non text deserunt ullamco...</a></h4>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the...</p>
+                              <span class="blockquote">By, Annette Black</span>
                             </div>
                           </div>
                         </div>
@@ -1174,59 +1152,50 @@
                         <div class="row">
                           <div class="col-md-4">
                             <div class="subCardStyle">
-                              <img alt="..." id="image11">
-                              <h4 id="headline11"><a href="javascript:void(0);"></a></h4>
-                              <p id="summary11"></p>
-                              <a href="" id="url11" style="color:blue ; text-decoration: underline;">Read more..</a>
-                              <!-- <span class="blockquote">By, Jacob Jones</span> -->
+                              <img src="images/list-news1.jpg" alt="...">
+                              <h4><a href="javascript:void(0);">Amet minim mollit non text deserunt ullamco...</a></h4>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the...</p>
+                              <span class="blockquote">By, Jacob Jones</span>
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="subCardStyle">
-                              <img  alt="..." id="image12">
-                              <h4 id="headline12"><a href="javascript:void(0);"></a></h4>
-                              <p id="summary12" ></p>
-                              <a href="" id="url12" style="color:blue ; text-decoration: underline;">Read more..</a>
-                              <!-- <span class="blockqte">By, Cameron Williamson</span> -->
+                              <img src="images/list-news2.jpg" alt="...">
+                              <h4><a href="javascript:void(0);">Amet minim mollit non text deserunt ullamco...</a></h4>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the...</p>
+                              <span class="blockquote">By, Cameron Williamson</span>
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="subCardStyle">
-                              <img alt="..." id="image13">
-                              <h4 id="headline13"><a href="javascript:void(0);"></a></h4>
-                              <p id="summary13"></p>
-                              <a href="" id="url13" style="color:blue ; text-decoration: underline;">Read more..</a>
-                              <!-- <span class="blockquote">By, Jacob Jones</span> -->
+                              <img src="images/list-news3.jpg" alt="...">
+                              <h4><a href="javascript:void(0);">Amet minim mollit non text deserunt ullamco...</a></h4>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the...</p>
+                              <span class="blockquote">By, Jacob Jones</span>
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="subCardStyle">
-                              <img src="images/list-news4.jpg" alt="..." id="image14">
-                              <h4 id="headline14"> <a href="javascript:void(0);"></a></h4>
-                              <p id="summary14"></p>
-                              <a href="" id="url14" style="color:blue ; text-decoration: underline;">Read more..</a>
-                              <!-- <span class="blockquote">By, Cameron Williamson</span> -->
+                              <img src="images/list-news4.jpg" alt="...">
+                              <h4><a href="javascript:void(0);">Amet minim mollit non text deserunt ullamco...</a></h4>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the...</p>
+                              <span class="blockquote">By, Cameron Williamson</span>
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="subCardStyle">
-                              <img src="images/list-news5.jpg" alt="..." id="image15">
-                              <h4 id="headline15"><a href="javascript:void(0);"></a></h4>
-                              <p id="summary15"></p>
-                              <a href="" id="url15" style="color:blue ; text-decoration: underline;">Read more..</a>
-                              <!-- <span class="blockquote">By, Courtney Henry</span> -->
+                              <img src="images/list-news5.jpg" alt="...">
+                              <h4><a href="javascript:void(0);">Amet minim mollit non text deserunt ullamco...</a></h4>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the...</p>
+                              <span class="blockquote">By, Courtney Henry</span>
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="subCardStyle">
-                              <img src="images/list-news6.jpg" alt="..." id="image16">
-                              <h4 id="headline16"><a href="javascript:void(0);"></a></h4>
-                              <p id="summary16" ></p> 
-                              <!-- <div class="summary"> -->
-                              <a href="" class="summary" id="url16" style="color:blue ; text-decoration: underline;">Read more..</a>
-                              <!-- </div> -->
-                              <!-- <a href="" id="url16" style="color:blue ; text-decoration: underline;">Read more..</a> -->
-                              <!-- <span class="blockquote">By, Annette Black</span> -->
+                              <img src="images/list-news6.jpg" alt="...">
+                              <h4><a href="javascript:void(0);">Amet minim mollit non text deserunt ullamco...</a></h4>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the...</p>
+                              <span class="blockquote">By, Annette Black</span>
                             </div>
                           </div>
                         </div>
@@ -1354,7 +1323,7 @@
                        <tr align="center">
   
                        </tr>
-                      </table> 
+                      </table>  
                   </div>  
                   <div class="valentinePackage">
                     <img src="images/valentine-package.jpg" alt="...">
@@ -1366,7 +1335,7 @@
         </div>
       </div>
     </section>
-     
+
     <footer>
       <div class="footerSec">
           <div class="footer_dots">
@@ -1376,7 +1345,7 @@
             <div class="row">
               <div class="col-lg">
                 <div class="left_footer">
-                  <a class="footerLogo" href="index.html">Financial Portal</a>
+                  <a class="footerLogo" href="index.html">The 11wallst</a>
                   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
                   <div class="footer_links">
                     <ul>
@@ -1433,15 +1402,12 @@
           </div>
         </div>
     </footer>
-   
 
 
     <!-- Optional JavaScript; choose one of the two! -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script> -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/custom.js" defer></script>
-
-
+    <script src="js/custom.js"></script>
   </body>
 </html>

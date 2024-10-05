@@ -8,12 +8,26 @@
 	font-weight: normal;
 	font-style: normal;
 }
-
 body {
   font-family: 'Poppins', sans-serif;
 	color: #757575;
 	font-size: 14px;
 }
+#logo{
+  color:green;
+  font-family:'Times New Roman', Times, serif;
+  margin-top: 9px;
+  font-weight: bolder;
+}
+#img{
+width: 40px;
+height: 28px;
+margin-top: -12px;
+}
+/* #stock{
+  width: 100px;
+  height: 50px;
+} */
 ul, li {
   padding: 0;
   margin: 0;
@@ -30,6 +44,7 @@ a, a:hover, a:focus {
   color: inherit;
   text-decoration: none;
 }
+
 img {
   max-width: 100%;
 }
@@ -128,6 +143,7 @@ img {
 .headerBtns > ul > li {
   display: inline-block;
   vertical-align: middle;
+  /* border:1px solid green; */
 }
 .headerBtns > ul > li + li {
   padding-left: 30px;
@@ -356,34 +372,40 @@ a.btn.btnDark:hover{
 .ColRight .titleCol h3{
   float: right;
   margin-top: -610px;
-  margin-right: 250px;
+  margin-right: -300px;
 }
+/* .table{
+  width: 50%;
+} */
 #table
 {
-  width: 35%;
+  /* width: 60%; */
   float: right;
   margin-top: -580px;
-  margin-right: -1px;
+  margin-right: -530px;
+  width:300px;
 }
 #table1{
-  width: 35%;
+  /* width: 45%; */
+  width: 300px;
   float: right;
-  margin-right: -3px;
-  margin-top:-210px ;
+  margin-right: 25px;
+  margin-top:-180px ;
+  /* border: 1px solid red; */
 }
 #table2
 {
-  width: 35%;
+  /* width: 70%; */
   float: right;
 }
 .ColRight2 .titleCol h3{
-  margin-top: 50px;
+  margin-top: -790px;
 
  
 }
 .ColRight1 .titleCol h3{
   float: right;
-  margin-top:-240px ;
+  margin-top:-200px ;
   margin-right: 240px;
 }
   
@@ -399,7 +421,7 @@ a.btn.btnDark:hover{
   color: green;
   font-size:12pt;
 
-} */
+} 
 .table-1 {
   width: 50%;
 }
@@ -532,15 +554,28 @@ a.btn.btnDark:hover{
 .cardBoxImg {
   height: 100%;
   width: 150px;
+  display: inline;
 }
 .cardBoxImg > img {
   width: 100%;
   height: 150px;
   object-fit: cover;
   min-height: 100%;
+  display: inline;
 }
 .cardBoxContent {
-  padding-left: 20px;
+  padding-left: 30px;
+}
+.cardBoxImg:nth-child(4){
+  display: inline;
+  border: 1px solid red;
+}
+#summary3{
+  overflow: hidden;
+}
+.summary{
+  max-height: 80px;
+  overflow: hidden;
 }
 .cardBoxContent > h4 {
   font-size: 19px;
@@ -605,6 +640,9 @@ a.btn.btnDark:hover{
   padding-left: 26px;
   display: block;
   margin: 0;
+  display: float;
+  margin-left: 170px;
+  
 }
 .blockquote::before {
   content: "";
@@ -614,9 +652,10 @@ a.btn.btnDark:hover{
   background-color: #5E875F;
   width: 20px;
   height: 1.5px;
+  float: right;
 }
 .cryptoCurrenicesCol {
-  margin-top: 20px;
+  margin-top: 450px;
 }
 .activeListCol .titleCol > h3 {
   margin-bottom: 10px;
@@ -673,7 +712,7 @@ a.btn.btnDark:hover{
   margin-top: 5px;
 }
 .valentinePackage {
-  margin-top: 400px;
+  margin-top: 900px;
 }
 .footerSec {
   position: relative;
@@ -887,6 +926,393 @@ a.btn.btnDark:hover{
 .tradingviewCol iframe {
   height: 90px !important;
 }
+/**********Stock page Styles********************************/
+.container{
+  color: #757575;
+  font-size: 12px;
+  font-weight: 500;
+}
+#line{
+        border: none;
+        border-top: 3px solid black;
+        height: 0;
+        margin-left:120px;
+        margin-right:   80px;
+        width: 80%;
+}
+.stocks h6{
+   color:black;
+   font-weight: 600;
+   font-style: bold;
+   font-size: 1.5em;
+}
+.time h3{ 
+    color: red;
+    font-size: 12px;
+}
+.time{
+  /* border: 1px solid yellow; */
+  /* width: 200px; */
+  height: 70px;
+}
+
+/* Style for the navbar container */
+.list {
+  display: flex; /* Make the container a flexbox */
+  justify-content: space-between; /* Distribute the items evenly */
+ /* Set the background color */
+  padding: 10px; /* Add some padding to the container */
+}
+/* Style for the navbar */
+.navbar ul {
+  list-style: none; /* Remove the default list style */
+  margin: 0;
+  padding: 0;
+  display: flex; /* Make the navbar a flexbox */
+}
+/* Style for the navbar items */
+.navbar li {
+  padding: 10px; /* Add some padding to the items */
+  cursor: pointer; /* Change the cursor to pointer */
+  color:blue;
+  border-bottom: 2px solid gray;
+}
+/* Style for the active navbar item */
+.navbar li:hover,.navbar li:focus {
+  /* Set the background color to blue */
+  color: black; /* Set the text color to white */
+  border-bottom-color: blue;
+			outline: none;
+}
+
+/* Style for the content area */
+.content {
+  padding: 20px; /* Add some padding to the content area */
+}
+
+.data{
+  width: 100%;
+  height: 100%;
+
+}
+
+
+.navs-4{
+  width:50%;
+  
+}
+.navs-4>table{
+  width:50%;
+}
+.tab-stat{
+  margin-top: 20px;
+}
+.tab-stat h6,h5{
+  color: black;
+  font-style: bold;
+  margin-left: 4px;
+  /* font-weight: 200; */
+}
+.tab-stat table{
+  width:400px;
+}
+.navs-5{
+  width:50%;
+  margin-left: 30px;
+  /* border: 1px solid black; */
+
+}
+#summary{
+  height: 130vh;
+}
+.info{
+  display: flex;
+  width: 100%;
+
+}
+.container>tr:hover{
+   background-color: lightblue;
+   cursor:pointer;
+}
+
+
+ #Historical-data{
+  display: none;
+  width: 100%;
+} 
+
+#Analysis{
+  display: none;
+  width: 100%;
+}
+
+.tab-ana{
+  width: 70%;
+  
+}
+.tab-ana1{
+  margin-top: 10px;
+  width: 70%;
+} 
+.tab-ana{
+  margin-top: 30px;
+}
+.tab-his{
+ width: 60%;
+}
+
+#Statistics {
+  display: none;
+  width: 80%;
+}
+
+
+.tables{
+  width: 60%;
+  /* height: 65%; */
+
+  
+}
+.tab{
+  margin-right: 8px;
+  height: 65%;
+}
+
+.table-dark>tr>th{
+  color: white;
+}
+
+.sum-datas{
+   display: flex;
+   /* align-items: stretch;
+    */
+    flex-wrap: wrap;
+}
+.sum-1{
+  width: 250px;
+
+}
+/* .sum-1 table{
+  width: 300px;
+  flex-basis: 0;
+  padding: 0;
+  margin: 0;
+}
+.sum-2 table{
+  flex-basis: 0;
+  padding: 0;
+  margin: 0;
+} */
+.sum-2{
+  width: 250px;
+}
+
+tbody>td,th
+ {
+  color: black;
+  padding: 10px;
+  /* font-size: 1.5em; */
+  border-bottom: 2px solid gray;
+
+ }
+  tbody>th,td
+  {
+    color: black;
+    padding: 10px;
+   border-bottom: 2px solid gray;
+}
+.stats{
+  width: 100%;
+  height: 100%;
+}
+#Profile{
+  display: none;
+  width: 100%;
+  height: 100vh;
+}
+.prof-1{
+  width: 250px;
+  margin-left: 10px;
+}
+.prof-1 h6{
+  color: black;
+}
+.prof-p {
+  height: 150px;
+}
+.prof-p h6{
+  font-size: 12px;
+}
+.prof-2{
+  width: 500px;
+  
+  margin-left: 180px;
+  margin-top: 30px;
+  color: black;
+
+}
+.prof-2 h6{
+  font-size: 12px;
+}
+/* .tab-prof{
+  border:none;
+} */
+.prof-info{
+  display: flex;
+  height: 150px;
+}
+.exec{
+  color: black;
+  /* height: 300px; */
+}
+.exec p{
+  font-size: 12px;
+  margin-top: 10px;
+}
+#Financial{
+ display: none;
+ width: 100%;
+ height: 100vh;
+ /* background-color: yellow; */
+}
+
+.fin-head p{
+  padding: 3px;
+  font-size: 13px;
+  color: black;
+}
+.head{
+  display:flex;
+  justify-content: space-between;
+  width: 60%;
+
+}
+.financial-table td{
+  width:200px;
+  border: 1px solid green;
+
+}
+.fin-head2{
+  margin-left: 70px;
+  margin: 5px;
+}
+/* Style the button */
+.dropbtn {
+  background-color: #fff;
+  color: #333;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Style the dropdown content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  z-index: 1;
+}
+/* Show the dropdown content when the button is clicked */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.fin-tab td{
+  background-color: gray;
+}
+.tab-fin{
+  width:100%;
+}
+#financial-table{
+  width: 400px;
+  margin-left: 50px;
+}
+#Chart{
+display:none}
+.ch{
+  width: 100%;
+  height: 100vh;
+}
+
+
+
+.col-md-1{
+  
+  width: 30%;
+   height: 280px; 
+   margin-left: 500px;
+   margin-top: -300px;  
+   box-shadow: 1px 1px 1px 1px whitesmoke;
+   border: 1px solid #ccc;  
+   border-radius: 5px; 
+  
+   /* background-color: whitesmoke; */
+   display: flex; 
+   flex-direction: column; 
+   height: 330px; 
+   } 
+
+ .col-md-2{
+  box-shadow: 1px 1px 1px 1px white;
+   /* background-color: whitesmoke; */
+  width: 35%;
+  height: 400px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin-left: 650px;
+   margin-top: -320px; 
+ 
+} 
+.News-row{
+  display: flex;
+  
+}
+.News-col{
+  width:100%;
+  height: 70%;
+  /* border:1px solid red; */
+  margin-top: 80px;
+  /* padding: 10px; */
+}  
+.news-align:first-child{
+  margin-left: 10px;
+}
+.news-align{
+  box-shadow: 1px 1px 1px 1px white;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  padding: 10px;
+  /* background-color: whitesmoke; */
+ width: 35%;
+ height: 430px;
+ border: 1px solid #ccc;
+ border-radius: 10px;
+
+}
+#more{
+  cursor: pointer;
+  font-size: 1.2em;
+  margin-bottom: 4px;
+  margin-left: 0;
+}
+
+
+
+#show{
+  display: none;
+  
+}
+
+ 
+
+
+
+
+
+
+
 
 /********************************
 ***** MEDIA QUARY ********
@@ -1055,7 +1481,7 @@ a.btn.btnDark:hover{
 	}
 }
 @media (max-width:991px) {
-	.navCol {
+  .navCol {
     position: fixed;
     left: 0;
     top: 0;
